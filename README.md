@@ -72,22 +72,28 @@ Raw predictors are transformed into a 24-dimensional feature representation capt
 3. **Domain Interaction Terms**: Humidity $\times$ Temperature, Relative Humidity $\times$ Wind Speed, Dew Point Depression $\times$ Humidity, Ceiling / Visibility ratios.
 4. **Rolling Window Statistics**: 6-hour, 12-hour, and 24-hour rolling means, standard deviations, and maximums.
 
-### Exploratory Visualizations
+### Exploratory & Operational Visualizations
 
-#### Feature Distributions: Fog vs. No-Fog
-Relative humidity distribution (`rh_pct`) shows fog events concentrated above $90\%$, while dew point depression (`td_depression`) clusters near zero.
+#### 1. Feature Distributions: Fog vs. No-Fog
+![Feature Distributions](assets/Feature%20distribution.png)
+*Figure 1: Comparison of key atmospheric feature distributions during Fog (red) and No-Fog (blue) events.*
 
-![Feature Distributions](assets/fog_dataset_overview.png)
+> **Description & Inferences**:  
+> The plot illustrates clear physical separation between classes across key predictors. Relative humidity (`rh_pct`) during fog events is heavily concentrated above $90\%$, whereas No-Fog events exhibit a broad distribution. Dew point depression (`td_depression`) clusters tightly near $0^\circ\text{C}$, confirming atmospheric moisture saturation as an absolute prerequisite. Furthermore, wind speed (`wind_speed`) peaks below $2\text{ m/s}$, validating the weak turbulent mixing requirement necessary for fog accumulation and boundary-layer persistence.
 
-#### Cyclic Sine/Cosine Feature Transformations
-Maps time coordinates continuously without artificial numerical jumps between 23:00 and 00:00.
+#### 2. Cyclic Sine/Cosine Feature Encodings
+![Cyclic Feature Encoding](assets/cyclic_encoding.png)
+*Figure 2: Trigonometric unit-circle mapping ($\sin/\cos$) for hour-of-day, month-of-year, and day-of-year.*
 
-![Cyclic Feature Encoding](assets/cyclic_encodings.png)
+> **Description & Inferences**:  
+> Standard integer representations of time introduce artificial numerical discontinuities between consecutive time steps (e.g., 23:00 to 00:00 or December to January). By mapping temporal variables onto unit circles using sine and cosine transformations, cyclical continuity is preserved. This encoding allows the Transformer multi-head attention mechanism to seamlessly capture diurnal radiative cooling cycles and seasonal patterns without boundary artifacts.
 
-#### Top Predictor Correlations with 6-Hour Target
-Identifies rolling visibility averages (`vis_m_mean`), short-term temperature trends (`t2m_c_roll3_mean`), and dew point depression as primary predictors.
+#### 3. Temporal Fog Predictions vs. Observed Actuals
+![Prediction Dynamics](assets/Prediction.png)
+*Figure 3: Model predicted probability dynamics (blue curve) against ground-truth fog observations (black markers) over the test period.*
 
-![Top Correlated Features](assets/top_features_corr.png)
+> **Description & Inferences**:  
+> The operational timeline compares the model's predicted fog probability against actual ground-truth fog occurrences over multiple winter seasons. The model maintains a stable near-zero baseline during clear periods and rapidly spikes above the operational safety threshold ($0.8$) prior to fog onset. The high correlation ($R^2 = 0.8608$) confirms that the hybrid architecture effectively captures atmospheric persistence and triggers reliable early warnings.
 
 ---
 
