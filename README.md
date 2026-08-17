@@ -77,17 +77,17 @@ Raw predictors are transformed into a 24-dimensional feature representation capt
 #### Feature Distributions: Fog vs. No-Fog
 Relative humidity distribution (`rh_pct`) shows fog events concentrated above $90\%$, while dew point depression (`td_depression`) clusters near zero.
 
-![Feature Distributions](../assets/fog_dataset_overview.png)
+![Feature Distributions](Fog-Prediction-System/assets/fog_dataset_overview.png)
 
 #### Cyclic Sine/Cosine Feature Transformations
 Maps time coordinates continuously without artificial numerical jumps between 23:00 and 00:00.
 
-![Cyclic Feature Encoding](../assets/cyclic_encodings.png)
+![Cyclic Feature Encoding](Fog-Prediction-System/assets/cyclic_encodings.png)
 
 #### Top Predictor Correlations with 6-Hour Target
 Identifies rolling visibility averages (`vis_m_mean`), short-term temperature trends (`t2m_c_roll3_mean`), and dew point depression as primary predictors.
 
-![Top Correlated Features](../assets/top_features_corr.png)
+![Top Correlated Features](Fog-Prediction-System/assets/top_features_corr.png)
 
 ---
 
