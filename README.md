@@ -22,13 +22,25 @@ This repository encapsulates `fog_prediction_system`, a modular Python framework
 ## 1. Problem Formulation & Atmospheric Criteria
 
 Winter fog prediction is formulated as a supervised binary classification task:
-$$
-\text{Fog} =
-\begin{cases}
-1, & \text{if } \Delta T \leq 2\,\text{K} \text{ AND } V \leq 2\,\text{m/s} \\
-0, & \text{otherwise}
-\end{cases}
-$$
+<p align="center">
+  <b>Fog Definition</b>
+</p>
+
+<table align="center">
+<tr>
+  <th>Fog</th>
+  <th>Condition</th>
+</tr>
+<tr>
+  <td align="center"><b>1</b></td>
+  <td>ΔT ≤ 2 K <b>AND</b> V ≤ 2 m/s</td>
+</tr>
+<tr>
+  <td align="center"><b>0</b></td>
+  <td>Otherwise</td>
+</tr>
+</table>
+
 Where:
 - $\Delta T = T - T_d$ is **Dew Point Depression**, representing near-surface atmospheric moisture saturation ($\le 2\text{ K}$).
 - $V$ is **Surface Wind Speed**, representing weak boundary layer turbulent mixing ($\le 2\text{ m/s}$) required for fog accumulation and persistence.
