@@ -29,7 +29,6 @@ $$
 0, & \text{otherwise}
 \end{cases}
 $$
-
 Where:
 - $\Delta T = T - T_d$ is **Dew Point Depression**, representing near-surface atmospheric moisture saturation ($\le 2\text{ K}$).
 - $V$ is **Surface Wind Speed**, representing weak boundary layer turbulent mixing ($\le 2\text{ m/s}$) required for fog accumulation and persistence.
