@@ -1,3 +1,8 @@
+![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Architecture](https://img.shields.io/badge/Model-Bi--LSTM%20%2B%20Transformer-orange.svg)
+![ROC-AUC](https://img.shields.io/badge/ROC--AUC-0.9742-brightgreen.svg)
+
 # 🌫️ Technical Report & Operational Guide: Hybrid LSTM-Transformer Architecture for Operational Winter Fog Prediction
 
 **Author**: Shaurya P.S. Yadav (251340011)  
